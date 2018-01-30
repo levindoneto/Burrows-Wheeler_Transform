@@ -1,32 +1,32 @@
 '''
-Return list of rotations of inputS string
-@Parameter: String: inputS
-@Return: List: All rotations given the string input
+Return list of rotations of inputS string.
+@Parameter: String: inputS.
+@Return: List: All rotations given the string input.
 '''
 def rotations(inputS):
     rotation = inputS * 2
     return [rotation[i:i+len(inputS)] for i in range(0, len(inputS))]
 
 '''
-Return sorted list of inputS’s rotations in a lexicographical way
-@Parameter: String: inputS
-@Return: List: All rotations sorted given the string input
+Return sorted list of inputS’s rotations in a lexicographic order.
+@Parameter: String: inputS.
+@Return: List: All rotations sorted given the string input.
 '''
 def bwm(inputS):
     return sorted(rotations(inputS))
 
 '''
-Return sorted list of inputS’s rotations in a lexicographical way
-@Parameter: List: BWM list
-@Return: String: Formatted matrix of rotations
+Return sorted list of inputS’s rotations in a lexicographic order.
+@Parameter: List: BWM list.
+@Return: String: Formatted matrix of rotations.
 '''
 def showRotations(bwmList):
     return '\n'.join(bwmList)
 
 '''
-Return the last column of the matrix of rotations
-@Parameter: String: inputS
-@Return: String: Last column
+Return the last column of the matrix of rotations.
+@Parameter: String: inputS.
+@Return: String: Last column.
 '''
 def getLastColumn(inputS):
     # Given T, returns BWT(T) by way of the BWM
@@ -35,8 +35,8 @@ def getLastColumn(inputS):
 '''
 Return a parallel list of B-ranks. It Also returns a map from character to the
 number of times it appears.
-@Parameter: String: Last BWM column
-@Return: Lists: ranks, Dict: map
+@Parameter: String: Last BWM column.
+@Return: Lists: ranks, Dict: map.
 '''
 def rankBwt(lastColumn):
     tots = dict()
@@ -53,12 +53,26 @@ Return map from character to the range of rows prefixed by the character.
 @Parameter: Dict: tots
 @Return: Dict: First column with ranks
 '''
-def firstColumn(tots):
-    ''' Return map from character to the range of rows prefixed by
-        the character. '''
+def firstColumn(tots):'
     firstC = {}
     totc = 0
     for c, counter in sorted(tots.items()):
         firstC[c] = (totc, totc + counter)
         totc += counter
     return firstC
+
+'''
+Retrieve the string given a bwt list.
+@Parameter: List: BWT List.
+@Return: String: Output from the BWT method reversed.
+'''
+def reverseBwt(bwt):
+    ranks, tots = rankBwt(bwt)
+    first = firstColumn(tots)
+    rowi = 0 # First row
+    outputS = '$' # Last char
+    while bwt[rowi] != '$':
+        c = bwt[rowi]
+        outputS = c + outputS
+        rowi = first[c][0] + ranks[rowi]
+    return outputS
