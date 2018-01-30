@@ -31,3 +31,19 @@ Return the last column of the matrix of rotations
 def getLastColumn(inputS):
     # Given T, returns BWT(T) by way of the BWM
     return ''.join(map(lambda rot: rot[-1], bwm(inputS)))
+
+'''
+Return a parallel list of B-ranks. It Also returns a map from character to the
+number of times it appears.
+@Parameter: String: Last BWM column
+@Return: Lists: ranks, Dict: map
+'''
+def rankBwt(lastColumn):
+    tots = dict()
+    ranks = []
+    for col in lastColumn:
+        if not(col in tots):
+            tots[col] = 0
+        ranks.append(tots[col])
+        tots[col] = tots[col] + 1
+    return ranks, tots
