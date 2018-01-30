@@ -1,11 +1,12 @@
 import Utils
+import sys
 
-def main():
+def main(args):
     print(
         Utils.showRotations(
-            Utils.bwm("test$")
+            Utils.bwm(args[1])
         )
     )
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv)

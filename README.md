@@ -5,7 +5,7 @@ __Author:__ Levindo Gabriel Taschetto Neto
 
 ## How to use
 ```Terminal
-python main.py
+python main.py string$
 ```
 
 ## License
