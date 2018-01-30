@@ -8,6 +8,7 @@ def main(args):
         )
     )
     ranks, tots = Utils.rankBwt(Utils.getLastColumn(args[1]))
-    print (dict(Utils.getLastColumn(args[1]), ranks))
+    print (map(Utils.getLastColumn(args[1]), ranks))
+    print (Utils.firstColumn(tots))
 if __name__ == '__main__':
     main(sys.argv)
