@@ -22,3 +22,12 @@ Return sorted list of inputS’s rotations in a lexicographical way
 '''
 def showRotations(bwmList):
     return '\n'.join(bwmList)
+
+'''
+Return the last column of the matrix of rotations
+@Parameter: String: inputS
+@Return: String: Last column
+'''
+def getLastColumn(inputS):
+    # Given T, returns BWT(T) by way of the BWM
+    return ''.join(map(lambda rot: rot[-1], bwm(inputS)))
