@@ -14,3 +14,11 @@ Return sorted list of inputS’s rotations in a lexicographical way
 '''
 def bwm(inputS):
     return sorted(rotations(inputS))
+
+'''
+Return sorted list of inputS’s rotations in a lexicographical way
+@Parameter: List: BWM list
+@Return: String: Formatted matrix of rotations
+'''
+def showRotations(bwmList):
+    return '\n'.join(bwmList)
