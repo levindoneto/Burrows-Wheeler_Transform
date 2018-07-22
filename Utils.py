@@ -53,7 +53,7 @@ Return map from character to the range of rows prefixed by the character.
 @Parameter: Dict: tots
 @Return: Dict: First column with ranks
 '''
-def firstColumn(tots):'
+def firstColumn(tots):
     firstC = {}
     totc = 0
     for c, counter in sorted(tots.items()):
